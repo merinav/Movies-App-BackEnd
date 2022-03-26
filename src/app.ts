@@ -6,7 +6,6 @@ import sanitize from 'express-mongo-sanitize';
 import { connectToMongoDb, CORS, isLambdaRuntime } from './commons';
 import healthRoutes from './routes/health.routes';
 import movieRoutes from './routes/movie.routes';
-import movieIdRoutes from './routes/movie.id.routes';
 
 dotenv.config();
 
@@ -22,7 +21,7 @@ app.use(CORS);
 app.use(sanitize());
 
 app.use('/movies', movieRoutes);
-app.use('/movies/566525', movieIdRoutes);
+app.use('/movies/566525', movieRoutes);
 app.use('/health', healthRoutes);
 
 const errorLogger: ErrorRequestHandler = (err, _req, _res, next) => {
