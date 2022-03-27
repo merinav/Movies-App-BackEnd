@@ -21,7 +21,6 @@ app.use(CORS);
 app.use(sanitize());
 
 app.use('/movies', movieRoutes);
-app.use('/movies/566525', movieRoutes);
 app.use('/health', healthRoutes);
 
 const errorLogger: ErrorRequestHandler = (err, _req, _res, next) => {
