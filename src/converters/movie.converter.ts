@@ -1,13 +1,15 @@
-const convert = (tmdbMovie: TmdbMovie): Movie => {
-  const prefix = 'https://image.tmdb.org/t/p/w500';
+const IMG_PREFIX_500 = 'https://image.tmdb.org/t/p/w500';
+
+function Convert(tmdbMovie: TmdbMovie): Movie {
   const movie: Movie = {
     movieId: tmdbMovie.id,
     title: tmdbMovie.title,
     releaseDate: tmdbMovie.release_date,
-    backdropPath: prefix + tmdbMovie.backdrop_path,
-    posterPath: prefix + tmdbMovie.poster_path,
+    backdropPath: IMG_PREFIX_500 + tmdbMovie.backdrop_path,
+    posterPath: IMG_PREFIX_500 + tmdbMovie.poster_path,
     voteAverage: tmdbMovie.vote_average,
   };
   return movie;
-};
-export { convert };
+}
+
+export { Convert };
