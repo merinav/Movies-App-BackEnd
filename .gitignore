@@ -128,6 +128,6 @@ $RECYCLE.BIN/
 *.lnk
 
 ### VisualStudioCode ###
-vscode/     
+.vscode/    
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows
