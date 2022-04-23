@@ -1,6 +1,6 @@
 const IMG_PREFIX_500 = 'https://image.tmdb.org/t/p/w500';
 
-function Convert(tmdbMovie: TmdbMovie): Movie {
+function convert(tmdbMovie: TmdbMovie): Movie {
   const movie: Movie = {
     movieId: tmdbMovie.id,
     title: tmdbMovie.title,
@@ -12,4 +12,4 @@ function Convert(tmdbMovie: TmdbMovie): Movie {
   return movie;
 }
 
-export { Convert };
+export { convert };

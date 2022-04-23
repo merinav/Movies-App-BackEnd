@@ -7,6 +7,7 @@
   "author": "Eager Code",
   "license": "MIT",
   "dependencies": {
+    "@jest/globals": "27.5.1",
     "aws-serverless-express": "3.4.0",
     "axios": "0.22.0",
     "dotenv": "10.0.0",

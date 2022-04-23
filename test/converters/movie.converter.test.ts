@@ -1,7 +1,8 @@
 //const {expect} = require('chai');
 //import expect = require('chai');
-import { expect } from 'chai';
-import { Convert } from './../../src/converters/movie.converter';
+//import { expect } from 'chai';
+import { expect } from '@jest/globals';
+import { convert } from './../../src/converters/movie.converter';
 
 const testTmdbMovie = {
   id: 1,
@@ -22,5 +23,5 @@ const testMovie = {
 };
 
 test('receives TmdbMovie returns Movie', () => {
-  expect(Convert(testTmdbMovie)).to.equal(testMovie);
+  expect(convert(testTmdbMovie)).toEqual(testMovie);
 });
