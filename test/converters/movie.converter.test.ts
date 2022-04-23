@@ -1,6 +1,3 @@
-//const {expect} = require('chai');
-//import expect = require('chai');
-//import { expect } from 'chai';
 import { expect } from '@jest/globals';
 import { convert } from './../../src/converters/movie.converter';
 
