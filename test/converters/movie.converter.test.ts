@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { convert } from './../../src/converters/movie.converter';
+import { convertTmdbMovieToMovie } from './../../src/converters/movie.converter';
 
 const testTmdbMovie = {
   id: 1,
@@ -20,5 +20,5 @@ const testMovie = {
 };
 
 test('receives TmdbMovie returns Movie', () => {
-  expect(convert(testTmdbMovie)).toEqual(testMovie);
+  expect(convertTmdbMovieToMovie(testTmdbMovie)).toEqual(testMovie);
 });
