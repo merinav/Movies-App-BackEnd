@@ -27,8 +27,6 @@ const convertToProductionCompanies = (tmdbProductionCompanies: TmdbProductionCom
 };
 
 const convertTmdbMovieDetailstoMovieDetails = (tmdbMovieDetails: TmdbMovieDetails): MovieDetails => {
-  const movie = convertTmdbMovieToMovie(tmdbMovieDetails);
-
   const movieDetails: MovieDetails = {
     budget: tmdbMovieDetails.budget,
     genres: tmdbMovieDetails.genres,
@@ -43,13 +41,10 @@ const convertTmdbMovieDetailstoMovieDetails = (tmdbMovieDetails: TmdbMovieDetail
     spokenLanguages: tmdbMovieDetails.spoken_languages.map(convertToSpokenLanguage),
     status: tmdbMovieDetails.status,
     tagline: tmdbMovieDetails.tagline,
-    title: tmdbMovieDetails.title,
     voteCount: tmdbMovieDetails.vote_count,
-    movieId: movie.movieId,
-    releaseDate: movie.releaseDate,
+    ...convertTmdbMovieToMovie(tmdbMovieDetails),
     backdropPath: IMG_PREFIX_ORIGINAL + tmdbMovieDetails.backdrop_path,
     posterPath: IMG_PREFIX_ORIGINAL + tmdbMovieDetails.poster_path,
-    voteAverage: movie.voteAverage,
   };
   return movieDetails;
 };
