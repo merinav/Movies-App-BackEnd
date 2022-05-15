@@ -1,63 +1,44 @@
 import { expect } from '@jest/globals';
 import { convertTmdbMovieDetailstoMovieDetails } from './../../src/converters/movie-details.converter';
 
-//genres: Genre[]
-const testGenre: Genre = {
-  id: 1,
-  name: 'genre_name',
-};
+const testGenres = [{ id: 1, name: 'genre_name' }];
 
-const testGenreArray = [testGenre, testGenre];
-
-//production_companies: TmdbProductionCompany[]
-const testTmdbMovieDetailsProductionCompanies: TmdbProductionCompany = {
-  id: 2,
-  logo_path: 'logo_path',
-  name: 'production_company_name',
-  origin_country: 'origin_country',
-};
-
-const testTmdbMovieDetailsProductionCompaniesArray = [
-  testTmdbMovieDetailsProductionCompanies,
-  testTmdbMovieDetailsProductionCompanies,
+const testTmdbMovieDetailsProductionCompanies = [
+  {
+    id: 2,
+    logo_path: 'logo_path',
+    name: 'production_company_name',
+    origin_country: 'origin_country',
+  },
 ];
 
-//production_countries: TmdbProductionCountry[]
-const testTmdbMovieDetailsProductionCountries: TmdbProductionCountry = {
-  iso_3166_1: 'iso_3166_1',
-  name: 'production_country_name',
-};
-
-const testTmdbMovieDetailsProductionCountriesArray = [
-  testTmdbMovieDetailsProductionCountries,
-  testTmdbMovieDetailsProductionCountries,
+const testTmdbMovieDetailsProductionCountries = [
+  {
+    iso_3166_1: 'iso_3166_1',
+    name: 'production_country_name',
+  },
 ];
 
-//spoken_languages: TmdbSpokenLanguage[]
-const testTmdbMovieDetailsSpokenLanguages: TmdbSpokenLanguage = {
-  english_name: 'english_name',
-  iso_639_1: 'iso_639_1',
-  name: 'spoken_language_name',
-};
-
-const testTmdbMovieDetailsSpokenLanguagesArray = [
-  testTmdbMovieDetailsSpokenLanguages,
-  testTmdbMovieDetailsSpokenLanguages,
+const testTmdbMovieDetailsSpokenLanguages = [
+  {
+    english_name: 'english_name',
+    iso_639_1: 'iso_639_1',
+    name: 'spoken_language_name',
+  },
 ];
 
-//testTmdbMovieDetails
 const testTmdbMovieDetails: TmdbMovieDetails = {
   budget: 3,
-  genres: testGenreArray,
+  genres: testGenres,
   homepage: 'homepage',
   original_language: 'original_language',
   original_title: 'original_title',
   overview: 'overview',
-  production_companies: testTmdbMovieDetailsProductionCompaniesArray,
-  production_countries: testTmdbMovieDetailsProductionCountriesArray,
+  production_companies: testTmdbMovieDetailsProductionCompanies,
+  production_countries: testTmdbMovieDetailsProductionCountries,
   revenue: 4,
   runtime: 5,
-  spoken_languages: testTmdbMovieDetailsSpokenLanguagesArray,
+  spoken_languages: testTmdbMovieDetailsSpokenLanguages,
   status: 'status',
   tagline: 'tagline',
   title: 'title',
@@ -69,52 +50,42 @@ const testTmdbMovieDetails: TmdbMovieDetails = {
   vote_average: 8,
 };
 
-//productionCompanies: ProductionCompany[]
-const testMovieDetailsProductionCompanies: ProductionCompany = {
-  id: 2,
-  logoPath: 'logo_path',
-  name: 'production_company_name',
-  originCountry: 'origin_country',
-};
-
-const testMovieDetailsProductionCompaniesArray = [
-  testMovieDetailsProductionCompanies,
-  testMovieDetailsProductionCompanies,
+const testMovieDetailsProductionCompanies = [
+  {
+    id: 2,
+    logoPath: 'logo_path',
+    name: 'production_company_name',
+    originCountry: 'origin_country',
+  },
 ];
 
-//productionCountries: ProductionCountry[]
-const testMovieDetailsProductionCountries: ProductionCountry = {
-  iso: 'iso_3166_1',
-  name: 'production_country_name',
-};
-
-const testMovieDetailsProductionCountriesArray = [
-  testMovieDetailsProductionCountries,
-  testMovieDetailsProductionCountries,
+const testMovieDetailsProductionCountries = [
+  {
+    iso: 'iso_3166_1',
+    name: 'production_country_name',
+  },
 ];
 
-// spokenLanguages: SpokenLanguage[]
-const testMovieDetailsSpokenLanguages: SpokenLanguage = {
-  englishName: 'english_name',
-  iso: 'iso_639_1',
-  name: 'spoken_language_name',
-};
+const testMovieDetailsSpokenLanguages = [
+  {
+    englishName: 'english_name',
+    iso: 'iso_639_1',
+    name: 'spoken_language_name',
+  },
+];
 
-const testMovieDetailsSpokenLanguagesArray = [testMovieDetailsSpokenLanguages, testMovieDetailsSpokenLanguages];
-
-//testMovieDetails
 const testMovieDetails: MovieDetails = {
   budget: 3,
-  genres: testGenreArray,
+  genres: testGenres,
   homepage: 'homepage',
   originalLanguage: 'original_language',
   originalTitle: 'original_title',
   overview: 'overview',
-  productionCompanies: testMovieDetailsProductionCompaniesArray,
-  productionCountries: testMovieDetailsProductionCountriesArray,
+  productionCompanies: testMovieDetailsProductionCompanies,
+  productionCountries: testMovieDetailsProductionCountries,
   revenue: 4,
   runtime: 5,
-  spokenLanguages: testMovieDetailsSpokenLanguagesArray,
+  spokenLanguages: testMovieDetailsSpokenLanguages,
   status: 'status',
   tagline: 'tagline',
   title: 'title',
@@ -126,7 +97,6 @@ const testMovieDetails: MovieDetails = {
   voteAverage: 8,
 };
 
-//test
 test('receives TmdbMovieDetails returns MovieDetails', () => {
   expect(convertTmdbMovieDetailstoMovieDetails(testTmdbMovieDetails)).toEqual(testMovieDetails);
 });
