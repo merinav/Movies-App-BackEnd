@@ -28,7 +28,7 @@
     "prestart": "npm run build",
     "prettier": "prettier \"src/**/*.ts\"",
     "prettier:fix": "prettier --write \"src/**/*.ts\"",
-    "start": "node --es-module-specifier-resolution=node ./dist/app.js",
+    "start": "node --es-module-specifier-resolution=node ./dist/src/app.js",
     "pretest": "npm run build",
     "test": "jest dist/test/"
   },
