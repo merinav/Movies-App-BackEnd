@@ -5,4 +5,4 @@ build-EchoMoviesApiFunction:
 	npm install
 	cp -r ./node_modules "$(ARTIFACTS_DIR)/"
 	npm run build
-	cp -r ./dist/* "$(ARTIFACTS_DIR)/"
+	cp -r ./dist/src/* "$(ARTIFACTS_DIR)/"
