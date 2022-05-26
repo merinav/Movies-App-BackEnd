@@ -19,7 +19,7 @@ const getMovie = async (_req: express.Request, res: express.Response, next: expr
       next(error);
     }
   } else {
-    next();
+    res.status(404).json({ error: 'Movie not found' });
   }
 };
 
