@@ -1,6 +1,9 @@
 import axios from 'axios';
+import NodeCache from 'node-cache';
 import { convertTmdbMovieToMovie } from '../converters/movie.converter';
 import { convertTmdbMovieDetailstoMovieDetails } from '../converters/movie-details.converter';
+
+const movieCache = new NodeCache();
 
 const getMovies = async (): Promise<Movies> => {
   const response = await axios.get<TmdbMovies>(
@@ -19,12 +22,18 @@ const getMovies = async (): Promise<Movies> => {
 export { getMovies };
 
 const getMovieDetails = async (movieId: string): Promise<MovieDetails> => {
-  const response = await axios.get<TmdbMovieDetails>(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`,
-  );
-  const convertedMovieDetails: MovieDetails = convertTmdbMovieDetailstoMovieDetails(response.data);
-  console.log(convertedMovieDetails);
-  return convertedMovieDetails;
+  const movieDetailsKey = `movie-${movieId}`;
+  const movieDetails: MovieDetails = movieCache.get(movieDetailsKey)!;
+  if (movieDetails) {
+    return movieDetails;
+  } else {
+    const result = await axios.get<TmdbMovieDetails>(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`,
+    );
+    const convertedMovieDetails: MovieDetails = convertTmdbMovieDetailstoMovieDetails(result.data);
+    movieCache.set(movieDetailsKey, convertedMovieDetails);
+    return convertedMovieDetails;
+  }
 };
 
 export { getMovieDetails };
