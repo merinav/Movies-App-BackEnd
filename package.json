@@ -18,7 +18,8 @@
     "js-sha256": "0.9.0",
     "jsonwebtoken": "8.5.1",
     "mongoose": "6.0.9",
-    "mongoose-paginate-v2": "1.4.2"
+    "mongoose-paginate-v2": "1.4.2",
+    "node-cache": "5.1.2"
   },
   "scripts": {
     "build": "tsc",
@@ -49,6 +50,7 @@
     "@types/jsonwebtoken": "8.5.5",
     "@types/mongoose": "5.11.97",
     "@types/mongoose-paginate-v2": "1.4.0",
+    "@types/node-cache": "4.2.5",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
     "chai": "4.2.0",
