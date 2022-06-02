@@ -6,17 +6,22 @@ import { convertTmdbMovieDetailstoMovieDetails } from '../converters/movie-detai
 const movieCache = new NodeCache();
 
 const getMovies = async (): Promise<Movies> => {
-  const response = await axios.get<TmdbMovies>(
-    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=1&vote_count.gte=1000&api_key=${process.env.API_KEY}`,
-  );
-  const responseMovies = response.data.results;
-  const convertedMovies: Movies = {
-    page: 1,
-    totalPages: response.data.total_pages,
-    movies: responseMovies.map(convertTmdbMovieToMovie),
-  };
-  console.log(convertedMovies);
-  return convertedMovies;
+  const moviesKey = 'movies';
+  const movies: Movies = movieCache.get(moviesKey)!;
+  if (movies) {
+    return movies;
+  } else {
+    const response = await axios.get<TmdbMovies>(
+      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=1&vote_count.gte=1000&api_key=${process.env.API_KEY}`,
+    );
+    const convertedMovies: Movies = {
+      page: 1,
+      totalPages: response.data.total_pages,
+      movies: response.data.results.map(convertTmdbMovieToMovie),
+    };
+    movieCache.set(moviesKey, convertedMovies);
+    return convertedMovies;
+  }
 };
 
 export { getMovies };
