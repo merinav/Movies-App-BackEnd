@@ -6,6 +6,7 @@ import sanitize from 'express-mongo-sanitize';
 import { connectToMongoDb, CORS, isLambdaRuntime } from './commons';
 import healthRoutes from './routes/health.routes';
 import movieRoutes from './routes/movie.routes';
+import moviesRoutes from './routes/movies.routes';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(json());
 app.use(CORS);
 app.use(sanitize());
 
+app.use('/', moviesRoutes);
 app.use('/movies', movieRoutes);
 app.use('/health', healthRoutes);
 
