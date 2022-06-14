@@ -2,11 +2,10 @@ import axios from 'axios';
 import NodeCache from 'node-cache';
 import { convertTmdbMovieToMovie } from '../converters/movie.converter';
 import { convertTmdbMovieDetailstoMovieDetails } from '../converters/movie-details.converter';
-//import { request } from 'express';
 
 const movieCache = new NodeCache();
 
-const getMovies = async (pageNumber: string): Promise<Movies> => {
+const getMovies = async (pageNumber: number): Promise<Movies> => {
   const moviesKey = `movies-page-${pageNumber}`;
   const movies: Movies = movieCache.get(moviesKey)!;
   if (movies) {
