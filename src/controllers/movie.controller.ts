@@ -4,9 +4,7 @@ import * as movieService from '../services/movie.service';
 import url = require('url');
 
 const getMovies = async (_req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
-  //import url = require('url');
   require('url');
-  //import url from 'url';
   const queryObject = url.parse(_req.url, true).query;
   const pageParemeter = queryObject.page;
   let pageNumber = '1';
