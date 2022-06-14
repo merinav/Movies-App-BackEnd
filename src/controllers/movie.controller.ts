@@ -1,18 +1,10 @@
 import express from 'express';
 import * as movieService from '../services/movie.service';
 
-import url = require('url');
-
 const getMovies = async (_req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
-  require('url');
-  const queryObject = url.parse(_req.url, true).query;
-  const pageParemeter = queryObject.page;
-  let pageNumber = '1';
-  if (typeof pageParemeter === 'string' && Number.isInteger(Number(pageParemeter))) {
-    pageNumber = pageParemeter;
-  }
+  const pageNumber = _req.query.page ? parseInt(_req.query.page as string) || 1 : 1;
   try {
-    res.json(await movieService.getMovies(pageNumber));
+    res.json(await movieService.getMovies(pageNumber.toString()));
   } catch (error) {
     next(error);
   }
