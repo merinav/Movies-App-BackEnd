@@ -32,13 +32,27 @@ const getMovieDetails = async (movieId: string): Promise<MovieDetails> => {
   if (movieDetails) {
     return movieDetails;
   } else {
-    const result = await axios.get<TmdbMovieDetails>(
+    const response = await axios.get<TmdbMovieDetails>(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`,
     );
-    const convertedMovieDetails: MovieDetails = convertTmdbMovieDetailstoMovieDetails(result.data);
+    const convertedMovieDetails: MovieDetails = convertTmdbMovieDetailstoMovieDetails(response.data);
     movieCache.set(movieDetailsKey, convertedMovieDetails);
     return convertedMovieDetails;
   }
 };
 
 export { getMovieDetails };
+
+const searchMoviesByTitle = async (movieTitle: string, pageNumber: number): Promise<Movies> => {
+  const response = await axios.get<TmdbMovies>(
+    `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&page=${pageNumber}&api_key=${process.env.API_KEY}`,
+  );
+  const convertedSearchByTitleResult: Movies = {
+    page: Number(pageNumber),
+    totalPages: response.data.total_pages,
+    movies: response.data.results.map(convertTmdbMovieToMovie),
+  };
+  return convertedSearchByTitleResult;
+};
+
+export { searchMoviesByTitle };
