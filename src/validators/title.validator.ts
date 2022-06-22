@@ -1,5 +1,5 @@
 const validate = (titleParam: string): boolean => {
-  return /^[A-Za-z0-9 -.-]*$/.test(titleParam);
+  // eslint-disable-next-line
+  return /^[a-zA-Z0-9- \.]+$/.test(titleParam);
 };
-//luzta kai title=' ' arba '.'
 export { validate };
