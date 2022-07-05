@@ -1,5 +1,6 @@
 import { expect } from '@jest/globals';
 import { validate } from './../../src/validators/title.validator';
+//import { getMovies as mockGetMovies } from './../../src/services/movie.service';
 
 const testString = {
   lettersOnlyCapital: 'ABCDE',
@@ -12,8 +13,6 @@ const testString = {
   lettersNumberDash: 'Abcde2-',
   lettersNumberDashDot: 'Abcde2-.',
   lettersNumberDashDotSpace: 'Abcde2-. ',
-  // doubleDash: '--',
-  // fourDots: '....',
   emptyString: '',
   symbolString: '&*+',
 };
@@ -49,12 +48,6 @@ describe('Validate()', () => {
   it('should return TRUE', () => {
     expect(validate(testString.lettersNumberDashDotSpace)).toBeTruthy();
   });
-  // it('should return FALSE', () => {
-  //   expect(validate(testString.doubleDash)).toBeFalsy();
-  // });
-  // it('should return FALSE', () => {
-  //   expect(validate(testString.fourDots)).toBeFalsy();
-  // });
   it('should return FALSE', () => {
     expect(validate(testString.emptyString)).toBeFalsy();
   });
@@ -62,5 +55,3 @@ describe('Validate()', () => {
     expect(validate(testString.symbolString)).toBeFalsy();
   });
 });
-
-//tiks jei bus pvz '------', reikia kad netiktų
