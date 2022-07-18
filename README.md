@@ -23,6 +23,7 @@ Before starting application - make sure all project dependencies are installed:
 ```
 npm install
 ```
+Before starting application - make sure to add .env file to you directory and add API key from MovieDB to it.
 
 Execute this command in terminal (cmd):
 ```
